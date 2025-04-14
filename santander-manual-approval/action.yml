@@ -1,0 +1,39 @@
+name: "Santander Manual Approval"
+description: "Permite aprobar los despliegues de forma manual"
+author: "Diego Campos"
+outputs:
+  approval_link:
+    description: "Generated link to approve deploy"
+inputs:
+  github_token:
+    description: "Required for permission to create the environment."
+    required: true
+  github_org:
+    description: "Default organization is 'santander-group-chile'"
+    required: true
+    default: 'santander-group-chile'
+  env_name:
+    description: "Required for declare and configure into the repository."
+    required: true
+    default: "dev"
+  approvers_users:
+    description: "Usernames which can approve the deploy"
+    required: false
+  approvers_teams:
+    description: "Teams which can approve the deploy"
+    required: false
+  timeout:
+    description: "Timeout in minutes"
+    required: false
+    default: "72"
+  dry_run:
+    description: "Do not perform creation, just calculate approvers and show it, then exit."
+    required: false
+    default: "false"
+
+runs:
+  using: "node16"
+  main: "lib/main.js"
+branding:
+  icon: "alert-octagon"
+  color: "yellow"
