@@ -1,0 +1,18 @@
+name: Santander Manual Workflow Approval
+description: Pause a workflow and get user approval to continue
+branding:
+  icon: pause
+  color: red
+inputs:
+  approvers:
+    description: Required approvers
+    required: true
+  secret:
+    description: Secret
+    required: true
+  approval_timeout:
+    description: Maximum approval waiting time
+    required: false
+runs:
+  using: docker
+  image: Dockerfile
